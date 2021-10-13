@@ -15,7 +15,7 @@ const Form = (props) => {
   };
 
   const onPressHandler = async () => {
-    if (login === "" && password === "") {
+    if (!login || !password) {
       console.log("set error please enter all values");
       return;
     }

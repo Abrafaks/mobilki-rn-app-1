@@ -4,7 +4,7 @@ const initialState = {
   login: null,
   password: null,
   token: null,
-  loggedIn: false,
+  note: null,
 };
 
 export const userSlice = createSlice({
@@ -22,6 +22,9 @@ export const userSlice = createSlice({
     },
     deleteToken(state) {
       state.token = null;
+    },
+    addNote(state, action) {
+      state.note = action.payload;
     },
   },
 });

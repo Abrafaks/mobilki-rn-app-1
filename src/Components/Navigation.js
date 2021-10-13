@@ -32,7 +32,7 @@ const Navigation = (props) => {
     <View style={styles.container}>
       {(toggles.register || toggles.login) && (
         <>
-          <Button title="Login" onPress={loginButtonHandler} />
+          <Button title="Log in" onPress={loginButtonHandler} />
           <Button title="Register" onPress={registerButtonHandler} />
         </>
       )}
@@ -40,6 +40,7 @@ const Navigation = (props) => {
         <>
           <Button title="Change Note" onPress={noteButtonHandler} />
           <Button title="Change Password" onPress={passwordButtonHandler} />
+          <Button title="Log out" onPress={loginButtonHandler} />
         </>
       )}
     </View>
@@ -48,7 +49,6 @@ const Navigation = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",

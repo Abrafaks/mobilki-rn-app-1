@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import React from "react";
 import Navigation from "./Components/Navigation";
 import AuthPage from "./Components/Auth/AuthPage";
+import AuthorizedPage from "./Components/AuthorizedContent/AuthorizedPage";
 
 const Index = (props) => {
   return (
@@ -9,6 +10,7 @@ const Index = (props) => {
       <Navigation loginButtonHandler registerButtonHandler />
 
       <AuthPage />
+      <AuthorizedPage />
     </View>
   );
 };
