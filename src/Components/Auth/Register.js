@@ -1,25 +1,26 @@
 import { View } from "react-native";
 import React from "react";
 import Form from "../../UI/Form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../../store/user.slice";
 import axios from "axios";
 import { toggleActions } from "../../../store/toggle.slice";
 
 const Register = (props) => {
   const dispatch = useDispatch();
+  const { ip } = useSelector((state) => state.backend);
 
   const registerHandler = async (user) => {
     dispatch(userActions.addUser(user));
 
     try {
       const registerResponse = await axios.post(
-        "http://150.254.68.251:3000/user/",
+        `http://${ip}:3000/user/`,
         user
       );
       if (registerResponse.status === 201) {
         const loginResponse = await axios.post(
-          "http://150.254.68.251:3000/auth/login",
+          `http://${ip}:3000/auth/login`,
           {},
           {
             auth: {

@@ -3,6 +3,7 @@ import React from "react";
 import Navigation from "./Components/Navigation";
 import AuthPage from "./Components/Auth/AuthPage";
 import AuthorizedPage from "./Components/AuthorizedContent/AuthorizedPage";
+import Error from "./Components/Error/Error";
 
 const Index = (props) => {
   return (
@@ -11,6 +12,7 @@ const Index = (props) => {
 
       <AuthPage />
       <AuthorizedPage />
+      <Error />
     </View>
   );
 };

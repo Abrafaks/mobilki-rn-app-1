@@ -5,6 +5,7 @@ const initialState = {
   login: true,
   changeNote: false,
   changePassword: false,
+  disableSubmitButton: false,
 };
 
 export const toggleSlice = createSlice({
@@ -34,6 +35,12 @@ export const toggleSlice = createSlice({
       state.login = false;
       state.changeNote = false;
       state.changePassword = true;
+    },
+    disableSubmitButton(state) {
+      state.disableSubmitButton = false;
+    },
+    enableSubmitButton(state) {
+      state.disableSubmitButton = false;
     },
   },
 });
