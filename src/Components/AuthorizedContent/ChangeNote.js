@@ -13,7 +13,7 @@ const ChangeNote = (props) => {
   const ChangeNoteHandler = async (user) => {
     try {
       const changePassword = await axios.put(
-        "http://192.168.1.88:3000/user/",
+        "http://150.254.68.251:3000/user/",
         {
           note: user.note,
         },

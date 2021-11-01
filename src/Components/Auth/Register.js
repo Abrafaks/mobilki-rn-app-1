@@ -14,12 +14,12 @@ const Register = (props) => {
 
     try {
       const registerResponse = await axios.post(
-        "http://192.168.1.88:3000/user/",
+        "http://150.254.68.251:3000/user/",
         user
       );
       if (registerResponse.status === 201) {
         const loginResponse = await axios.post(
-          "http://192.168.1.88:3000/auth/login",
+          "http://150.254.68.251:3000/auth/login",
           {},
           {
             auth: {

@@ -7,7 +7,7 @@ import AuthorizedPage from "./Components/AuthorizedContent/AuthorizedPage";
 const Index = (props) => {
   return (
     <View style={styles.container}>
-      <Navigation loginButtonHandler registerButtonHandler />
+      <Navigation />
 
       <AuthPage />
       <AuthorizedPage />

@@ -6,11 +6,11 @@ const ChangeNoteForm = (props) => {
   const [note, setNote] = useState(null);
 
   const noteChangeHandler = (input) => {
-    setNote(input.trim());
+    setNote(input);
   };
 
   const onPressHandler = async () => {
-    if (!note) {
+    if (!note.trim()) {
       console.log("set error please enter all values");
       return;
     }

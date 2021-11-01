@@ -14,7 +14,7 @@ const Login = (props) => {
 
     try {
       const loginResponse = await axios.post(
-        "http://192.168.1.88:3000/auth/login",
+        "http://150.254.68.251:3000/auth/login",
         {},
         {
           auth: {
