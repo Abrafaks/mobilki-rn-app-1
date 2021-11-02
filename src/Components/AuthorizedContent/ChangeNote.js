@@ -1,19 +1,38 @@
 import { View, Text } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ChangeNoteForm from "../../UI/ChangeNoteForm";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../../../store/user.slice";
+import { toggleActions } from "../../../store/toggle.slice";
 
 const ChangeNote = (props) => {
-  const dispatch = useDispatch();
-  const { note, token } = useSelector((state) => state.user);
   const [successMessage, setSuccessMessage] = useState("");
+  const [note, setNote] = useState("");
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.user);
+  const { ip } = useSelector((state) => state.backend);
+
+  useEffect(() => {
+    const getNote = async () => {
+      const getNoteResponse = await axios.get(`http://${ip}:3000/user/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setNote(getNoteResponse.data.note);
+    };
+
+    getNote();
+
+    console.log(getNote);
+  }, []);
 
   const ChangeNoteHandler = async (user) => {
     try {
-      const changePassword = await axios.put(
-        "http://150.254.68.251:3000/user/",
+      const changeNote = await axios.put(
+        `http://${ip}:3000/user/`,
         {
           note: user.note,
         },
@@ -24,7 +43,7 @@ const ChangeNote = (props) => {
         }
       );
 
-      dispatch(userActions.addNote(user.note));
+      dispatch(toggleActions.enableSubmitButton());
       setSuccessMessage("Note changed successfully");
     } catch (e) {
       console.log(e);
@@ -35,7 +54,7 @@ const ChangeNote = (props) => {
     <View>
       <Text>{successMessage}</Text>
       <ChangeNoteForm text="Change Note" onPressHandler={ChangeNoteHandler} />
-      <Text>{note}</Text>
+      <Text>Your note: {note}</Text>
     </View>
   );
 };

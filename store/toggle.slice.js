@@ -37,9 +37,11 @@ export const toggleSlice = createSlice({
       state.changePassword = true;
     },
     disableSubmitButton(state) {
-      state.disableSubmitButton = false;
+      console.log("Disabling submit button");
+      state.disableSubmitButton = true;
     },
     enableSubmitButton(state) {
+      console.log("Enabling submit button");
       state.disableSubmitButton = false;
     },
   },

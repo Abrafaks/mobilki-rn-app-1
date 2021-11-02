@@ -29,15 +29,14 @@ const Login = (props) => {
         .catch((e) => {
           dispatch(errorActions.setError(e.response.status));
         });
+      dispatch(toggleActions.enableSubmitButton());
 
       if (loginResponse) {
         dispatch(errorActions.setError(0));
         dispatch(userActions.addToken(loginResponse.data.token));
         dispatch(toggleActions.toggleChangeNote());
       }
-    } catch (e) {
-      console.log("try catch ", e);
-    }
+    } catch (e) {}
   };
 
   return (
