@@ -42,7 +42,7 @@ const ChangeNote = (props) => {
           },
         }
       );
-
+      setNote(user.note);
       dispatch(toggleActions.enableSubmitButton());
       setSuccessMessage("Note changed successfully");
     } catch (e) {

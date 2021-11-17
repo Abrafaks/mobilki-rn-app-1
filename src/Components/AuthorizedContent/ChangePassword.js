@@ -7,15 +7,16 @@ import { useSelector } from "react-redux";
 const ChangePassword = (props) => {
   const { password, token } = useSelector((state) => state.user);
   const [successMessage, setSuccessMessage] = useState("");
+  const { ip } = useSelector((state) => state.backend);
 
   const changePasswordHandler = async (user) => {
     try {
-      if (password !== user.oldPassword) {
-        setSuccessMessage("Please enter valid old password");
+      if (user.newPassword !== user.repeatNewPassword) {
+        setSuccessMessage("Please enter valid password");
         return;
       }
       const changePassword = await axios.put(
-        "http://150.254.68.251:3000/user/",
+        `http://${ip}:3000/user/`,
         {
           password: user.newPassword,
         },
